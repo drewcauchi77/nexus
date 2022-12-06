@@ -40,7 +40,7 @@ var languageQuery = new GraphQLObjectType({
                 resolve() {
                     const languages = LanguageModel.findAll({
                         order: [
-                            ['createdAt', 'DESC']
+                            ['createdAt', 'ASC']
                         ],
                     })
                     if (!languages) {
@@ -55,10 +55,20 @@ var languageQuery = new GraphQLObjectType({
                     id: {
                         name: 'id',
                         type: GraphQLInt
+                    },
+                    code: {
+                        name: 'code',
+                        type: GraphQLString
                     }
                 },
                 resolve(root, params) {
-                    const languageDetails = LanguageModel.findByPk(params.id)
+                    let languageDetails;
+                    if(params.id) {
+                        languageDetails = LanguageModel.findByPk(params.id);
+                    } else if(params.code) {
+                        languageDetails = LanguageModel.findOne({ where: { code: params.code } });
+                    }
+                    
                     if (!languageDetails) {
                         throw new Error('Error')
                     }
@@ -83,9 +93,17 @@ var languageMutation = new GraphQLObjectType({
                         type: new GraphQLNonNull(GraphQLString)
                     },
                 },
-                resolve(root, params) {
-                    const languageModel = new LanguageModel(params);
-                    const newLanguage = languageModel.save();
+                async resolve(root, params) {
+                    let languageModel, newLanguage;
+                    const isLanguageCodeUnique = await LanguageModel.findOne({ where: { code: params.code } }) !== null ? false : true;
+
+                    if(isLanguageCodeUnique) {
+                        languageModel = new LanguageModel(params);
+                        newLanguage = languageModel.save();
+                    } else {
+                        throw new Error('Language Code Already exists');
+                    }
+                    
                     if (!newLanguage) {
                         throw new Error('Error');
                     }
