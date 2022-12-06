@@ -1,8 +1,13 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  height: 100%;
+  background-color: black;
+  position: relative;
 }
 
-a {
-  color: #00B7FF;
+body {
+  position: absolute;
+  color: white;
+  bottom: 20px;
+  left: 20px;
+  font: 20px Arial, sans-serif;
 }
