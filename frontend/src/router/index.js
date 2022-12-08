@@ -1,18 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/HomeView.vue';
+import Dashboard from '@/views/Dashboard.vue';
+
+import Languages from '@/views/language/Languages.vue';
+import EditLanguage from '@/views/language/EditLanguage.vue';
+import AddLanguage from '@/views/language/AddLanguage.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView,
+    name: 'Dashboard',
+    component: Dashboard,
   },
   {
-    path: '/about',
-    name: 'about',
-    component: AboutView,
-  }
+    path: '/languages',
+    name: 'Languages',
+    component: Languages,
+  },
+  {
+    path: '/language/edit/:id',
+    name: 'EditLanguage',
+    component: EditLanguage,
+  },
+  {
+    path: '/language/new',
+    name: 'AddLanguage',
+    component: AddLanguage,
+  },
 ];
 
 // route level code-splitting
