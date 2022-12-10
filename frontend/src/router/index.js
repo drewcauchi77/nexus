@@ -17,12 +17,12 @@ const routes = [
     component: Languages,
   },
   {
-    path: '/language/edit/:id',
+    path: '/languages/edit/:id',
     name: 'EditLanguage',
     component: EditLanguage,
   },
   {
-    path: '/language/new',
+    path: '/languages/new',
     name: 'AddLanguage',
     component: AddLanguage,
   },

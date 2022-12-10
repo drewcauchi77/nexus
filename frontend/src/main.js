@@ -9,11 +9,12 @@ import { createApolloProvider } from '@vue/apollo-option'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { 
+    faArrowRight,
     faHouseChimney, 
     faLanguage 
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHouseChimney, faLanguage);
+library.add(faArrowRight, faHouseChimney, faLanguage);
 
 const cache = new InMemoryCache();
 

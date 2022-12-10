@@ -1,5 +1,5 @@
 <template>
-    <div class="side-menu-item">
+    <nav class="side-menu-item">
         <router-link :to="anchor">
             <div class="active-link"></div>
             <div class="link-section">
@@ -7,7 +7,7 @@
                 <span>{{anchorText}}</span>
             </div>
         </router-link>
-    </div>
+    </nav>
 </template>
 
 <script>
@@ -33,30 +33,45 @@ export default {
         display: block;
         position: relative;
         .active-link {
-            display: none;
+            max-width: 0px;
             position: absolute;
             top: 0;
             bottom: 0;
             left: 0;
-            width: 3px;
+            width: 100%;
             background: $white;
             margin: auto;
             height: 100%;
             border-radius: 0 $border-radius $border-radius 0;
+            transition: 0.2s ease-in;
         }
         .link-section {
-            display: flex;
-            grid-gap: 25px;
-            padding: 15px 12px;
-        }
-        &.router-link-active, &.router-link-exact-active {
-            .active-link {
-                display: block;
+            display: grid;
+            grid-template-columns: 64px auto;
+            height: 50px;
+            align-content: center;
+            span {
+                text-align: left;
             }
         }
-        &:hover {
+        &:hover, &.router-link-active, &.router-link-exact-active {
             .active-link {
-                display: block;
+                border-left: 1px solid $purple;
+                max-width: 4px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $screen-lg) {
+    .side-menu-item {
+        a {
+            .link-section {
+                grid-template-columns: 90px auto;
+                height: 60px;
+                span {
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -64,13 +79,25 @@ export default {
 </style>
 
 <style lang="scss">
+@import '@/assets/variables';
+
 .side-menu-item {
     a {
         svg {
+            justify-self: center;
             width: 22px;
             height: auto;
-            padding: 0 9px;
             flex: none;
+        }
+    }
+}
+
+@media only screen and (min-width: $screen-lg) {
+    .side-menu-item {
+        a {
+            svg {
+                width: 28px;
+            }
         }
     }
 }

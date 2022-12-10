@@ -1,7 +1,7 @@
 <template>
     <main id="main">
-        <side-menu></side-menu>
-        <div id="content">
+        <side-menu @isMenuExpanded="isSideMenuExpanded"></side-menu>
+        <div id="content" :class="{'restrict-width' : isMenuExpanded}">
             <router-view></router-view>
         </div>
     </main>
@@ -12,19 +12,52 @@ import SideMenu from '@/components/side_menu/SideMenu.vue';
 
 export default {
     name: 'App',
+    data() {
+        return {
+            isMenuExpanded: false,
+        }
+    },
     components: {
         SideMenu
+    },
+    methods: {
+        isSideMenuExpanded(value) {
+            this.isMenuExpanded = value;
+        }
     },
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/variables';
+
 #main {
     display: flex;
     #content {
         padding: 10px;
-        // Side menu width + padding + content padding x 2
-        width: calc(100vw - 82px);
+        width: calc(100vw - 95px);
+    }
+}
+
+@media only screen and (min-width: $screen-md) {
+    #main {
+        #content {
+            &.restrict-width {
+                width: calc(100vw - 211px);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $screen-lg) {
+    #main {
+        #content {
+            padding: 30px;
+            width: calc(100vw - 173px);
+            &.restrict-width {
+                width: calc(100vw - 303px);
+            }
+        }
     }
 }
 </style>
