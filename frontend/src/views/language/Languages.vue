@@ -5,16 +5,14 @@
         </template>
         <template v-else>
             <title-header :title="'Languages'"></title-header>
-            
-            <ul v-if="languages">
-                <li v-for="lang in languages">{{lang.name}}</li>
-            </ul>
+            <query-list :list="languages"></query-list>
         </template>
     </div>
 </template>
 
 <script>
 import TitleHeader from '@/components/header/TitleHeader.vue';
+import QueryList from '@/components/QueryList.vue';
 import { GET_LANGUAGES } from '@/queries/languages';
 
 export default {
@@ -27,6 +25,7 @@ export default {
     },
     components: {
         TitleHeader,
+        QueryList,
     },
 }
 </script>

@@ -29,7 +29,7 @@ export default {
     text-align: center;
     font-size: 14px;
     a {
-        color: $white;
+        color: $highlight-color;
         display: block;
         position: relative;
         .active-link {
@@ -39,7 +39,7 @@ export default {
             bottom: 0;
             left: 0;
             width: 100%;
-            background: $white;
+            background: $highlight-color;
             margin: auto;
             height: 100%;
             border-radius: 0 $border-radius $border-radius 0;
@@ -56,7 +56,7 @@ export default {
         }
         &:hover, &.router-link-active, &.router-link-exact-active {
             .active-link {
-                border-left: 1px solid $purple;
+                border-left: 1px solid $nice-black;
                 max-width: 4px;
             }
         }

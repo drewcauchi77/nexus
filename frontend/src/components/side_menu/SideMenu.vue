@@ -53,7 +53,7 @@ export default {
         border-radius: 50%;
         height: 30px;
         width: 30px;
-        background-color: $white;
+        background-color: $highlight-color;
         box-shadow: $box-shadow;
         cursor: pointer;
         transition: 0.2s ease-in;
@@ -82,7 +82,7 @@ export default {
         overflow-y: scroll;
         overflow-x: hidden;
         height: 100%;
-        background-color: $purple;
+        background-color: $nice-black;
         border-radius: $border-radius;
         box-shadow: $box-shadow;
         .side-menu-item {
