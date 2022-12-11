@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap');
 
-body {
+body, button, input {
     margin: 0px;
     font-family: 'Raleway', sans-serif;
     color: $text-color;
@@ -50,6 +50,14 @@ a {
     text-decoration: none;
     &:hover {
         font-weight: 500;
+    }
+}
+
+input {
+    background-color: $text-color;
+    color: $nice-black;
+    &:focus {
+        outline-color: $highlight-color;
     }
 }
 

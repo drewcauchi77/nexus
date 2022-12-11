@@ -5,6 +5,7 @@ var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
 var GraphQLInt = require('graphql').GraphQLInt;
 var GraphQLDate = require('graphql-date');
+const { Op } = require("sequelize");
 
 var LanguageModel = require('../models').Language;
 
@@ -95,7 +96,11 @@ var languageMutation = new GraphQLObjectType({
                 },
                 async resolve(root, params) {
                     let languageModel, newLanguage;
-                    const isLanguageCodeUnique = await LanguageModel.findOne({ where: { code: params.code } }) !== null ? false : true;
+                    const isLanguageCodeUnique = await LanguageModel.findOne({ 
+                        where: { 
+                            code: params.code 
+                        } 
+                    }) !== null ? false : true;
 
                     if(isLanguageCodeUnique) {
                         languageModel = new LanguageModel(params);
@@ -125,23 +130,36 @@ var languageMutation = new GraphQLObjectType({
                         type: new GraphQLNonNull(GraphQLString)
                     },
                 },
-                resolve(root, params) {
-                    return LanguageModel.findByPk(params.id).then(language => {
-                        if (!language) {
-                            throw new Error('Not found');
-                        }
+                async resolve(root, params) {
+                    const isLanguageCodeUnique = await LanguageModel.findOne({ 
+                        where: {
+                            id: {
+                                [Op.not]: params.id,
+                            },
+                            code: params.code
+                        } 
+                    }) !== null ? false : true;
 
-                        return language.update({
-                            name: params.name || language.name,
-                            code: params.code || language.code,
-                        }).then(() => { 
-                            return language; 
+                    if(isLanguageCodeUnique) {
+                        return LanguageModel.findByPk(params.id).then(language => {
+                            if (!language) {
+                                throw new Error('Not found');
+                            }
+
+                            return language.update({
+                                name: params.name || language.name,
+                                code: params.code || language.code,
+                            }).then(() => { 
+                                return language; 
+                            }).catch((error) => { 
+                                throw new Error(error); 
+                            });
                         }).catch((error) => { 
                             throw new Error(error); 
                         });
-                    }).catch((error) => { 
-                        throw new Error(error); 
-                    });
+                    } else {
+                        throw new Error('Language Code Already exists');
+                    }
                 }
             },
             removeLanguage: {

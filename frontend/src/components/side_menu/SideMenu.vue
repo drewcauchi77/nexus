@@ -7,6 +7,7 @@
         <div class="inner-side-menu">
             <side-menu-link :anchor="'/'" :anchorIcon="'fa-house-chimney'" :anchorText="'Home'" />
             <side-menu-link :anchor="'/languages'" :anchorIcon="'fa-language'" :anchorText="'Languages'" />
+            <side-menu-link :anchor="'/'" :anchorIcon="'fa-globe'" :anchorText="'Sites'" />
         </div>
     </div>
 </template>

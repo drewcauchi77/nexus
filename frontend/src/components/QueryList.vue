@@ -22,15 +22,10 @@
 </template>
 
 <script>
-import ButtonVue from '@/components/buttons/Button.vue';
-
 export default {
     name: 'QueryList',
     props: {
         list: Object,
-    },
-    components: {
-        ButtonVue,
     },
 }
 </script>
@@ -45,7 +40,6 @@ export default {
     }
     .table-row {
         display: flex;
-        grid-gap: 10px;
         padding: 0 10px;
         height: 60px;
         margin-bottom: 10px;
@@ -54,6 +48,7 @@ export default {
         .table-item {
             width: 25%;
             align-self: center;
+            margin: 0 10px;
         }
     }
 }

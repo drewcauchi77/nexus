@@ -1,9 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Dashboard from '@/views/Dashboard.vue';
-
-import Languages from '@/views/language/Languages.vue';
-import EditLanguage from '@/views/language/EditLanguage.vue';
-import AddLanguage from '@/views/language/AddLanguage.vue';
+import { languageRoutes } from '@/router/languages';
 
 const routes = [
   {
@@ -11,21 +8,7 @@ const routes = [
     name: 'Dashboard',
     component: Dashboard,
   },
-  {
-    path: '/languages',
-    name: 'Languages',
-    component: Languages,
-  },
-  {
-    path: '/languages/edit/:id',
-    name: 'EditLanguage',
-    component: EditLanguage,
-  },
-  {
-    path: '/languages/new',
-    name: 'AddLanguage',
-    component: AddLanguage,
-  },
+  ...languageRoutes
 ];
 
 // route level code-splitting

@@ -37,6 +37,7 @@ export default {
     margin: 0 auto;
     #content {
         padding: 10px;
+        margin: 30px 0;
         width: calc(100vw - 95px);
     }
 }

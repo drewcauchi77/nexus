@@ -1,12 +1,12 @@
 <template>
-    <div class="button" @click="action()">
+    <button class="button" @click="action()" :style="{ border: `2px solid ${color}` }">
         <div class="text-area" :style="{ backgroundColor: color }">
             <span>{{text}}</span>
         </div>
-        <div class="icon-container" :style="{ backgroundImage: `linear-gradient(to left, transparent 50%, ${color} 50%)`, border: `2px solid ${color}` }">
+        <div class="icon-container" :style="{ backgroundImage: `linear-gradient(to left, transparent 50%, ${color} 50%)` }">
             <icon class="icon" :icon="icon" />
         </div>
-    </div>
+    </button>
 </template>
 
 <script>
@@ -42,10 +42,14 @@ export default {
     display: flex;
     height: 40px;
     border-radius: 50px;
-    width: 135px;
     cursor: pointer;
     transition: 0.2s ease-in;
+    background: transparent;
+    border: none;
+    padding: 0px;
     .text-area {
+        height: 100%;
+        display: none;
         border-radius: 50px 0 0 50px;
         width: 100px;
         position: relative;
@@ -63,8 +67,9 @@ export default {
         }
     }
     .icon-container {
+        height: 100%;
         width: 35px;
-        border-radius: 0 50px 50px 0;
+        border-radius: 50px;
         position: relative;
         background-size: 200%;
         transition: 0.2s ease-in;
@@ -83,6 +88,18 @@ export default {
     &:hover {
         .icon-container {
             background-position: left;
+        }
+    }
+}
+
+@media only screen and (min-width: $screen-md) {
+    .button {
+        width: 135px;
+        .text-area {
+            display: block;
+        }
+        .icon-container {    
+            border-radius: 0 50px 50px 0;
         }
     }
 }
