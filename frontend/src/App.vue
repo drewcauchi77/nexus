@@ -33,6 +33,8 @@ export default {
 
 #main {
     display: flex;
+    max-width: 1900px;
+    margin: 0 auto;
     #content {
         padding: 10px;
         width: calc(100vw - 95px);

@@ -2,19 +2,19 @@
     <div id="query-list">
         <template v-if="list">
             <div class="table-header table-row">
-                <span class="table-item">ID</span>
-                <span class="table-item">NAME</span>
-                <span class="table-item">CODE</span>
-                <span class="table-item">ACTION</span>
+                <strong class="table-item">ID</strong>
+                <strong class="table-item">Name</strong>
+                <strong class="table-item">Code</strong>
+                <strong class="table-item">Action</strong>
             </div>
 
             <div class="table-row" v-for="(item, index) in list" :key="index">
                 <span class="table-item">{{item.id ? item.id : ''}}</span>
                 <span class="table-item">{{item.name ? item.name : ''}}</span>
                 <span class="table-item">{{item.code ? item.code : ''}}</span>
-                <span class="table-item">
-                    <router-link :to="`/languages/edit/${item.id}`">Edit</router-link>
-                </span>
+                <div class="table-item">
+                    <button-vue :link="`/languages/edit/${item.id}`" :color="'#3D8BE4'" :text="'Edit'" :icon="'fa-pen'"></button-vue>
+                </div>
             </div>
         </template>
         <span v-else></span>
@@ -22,10 +22,15 @@
 </template>
 
 <script>
+import ButtonVue from '@/components/buttons/Button.vue';
+
 export default {
     name: 'QueryList',
     props: {
         list: Object,
+    },
+    components: {
+        ButtonVue,
     },
 }
 </script>
@@ -34,10 +39,9 @@ export default {
 @import '@/assets/variables';
 
 #query-list {
-    max-width: 1600px;
     .table-header {
-        background-color: $nice-black;
-        color: $highlight-color;
+        background-color: $highlight-color;
+        color: $nice-black;
     }
     .table-row {
         display: flex;

@@ -10,11 +10,13 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { 
     faArrowRight,
+    faPlus,
+    faPen,
     faHouseChimney, 
-    faLanguage 
+    faLanguage, 
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faArrowRight, faHouseChimney, faLanguage);
+library.add(faArrowRight, faPlus, faPen, faHouseChimney, faLanguage);
 
 const cache = new InMemoryCache();
 

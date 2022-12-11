@@ -48,7 +48,7 @@ export default {
     .collapse-button {
         display: none;
         position: absolute;
-        top: 15px;
+        bottom: 15px;
         right: 0px;
         border-radius: 50%;
         height: 30px;

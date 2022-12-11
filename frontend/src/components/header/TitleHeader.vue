@@ -1,18 +1,20 @@
 <template>
     <div id="title-header">
         <h2>{{title}}</h2>
-        
-        <div class="buttons">
-            <div><router-link :to="`${$route.path}/new`">Add New Language</router-link></div>
-        </div>
+        <button-vue :link="`/languages/new`" :color="'#2EA923'" :text="'Create'" :icon="'fa-plus'"></button-vue>
     </div>
 </template>
 
 <script>
+import ButtonVue from '@/components/buttons/Button.vue';
+
 export default {
     name: 'TitleHeader',
     props: {
         title: String,
+    },
+    components: {
+        ButtonVue,
     },
 }
 </script>
@@ -21,8 +23,9 @@ export default {
 @import '@/assets/variables';
 
 #title-header {
-    h2 {
-        margin-bottom: 20px;
-    }
+    margin-bottom: 40px;
+    display: flex;
+    grid-gap: 20px;
+    align-items: center;
 }
 </style>
