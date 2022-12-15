@@ -1,7 +1,11 @@
 <template>
     <div id="title-header">
         <h2>{{title}}</h2>
-        <button-vue v-if="hasButton" :link="`/languages/new`" :color="'#2EA923'" :text="'Create'" :icon="'fa-plus'"></button-vue>
+        <button-vue v-if="hasButton" 
+          :link="`/languages/new`" 
+          :color="'#2EA923'" 
+          :text="'Create'" 
+          :icon="'fa-plus'" />
     </div>
 </template>
 

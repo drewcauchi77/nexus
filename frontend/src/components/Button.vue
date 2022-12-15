@@ -29,7 +29,11 @@ export default {
     },
     methods: {
         action() {
-            this.$router.push({ path: this.link });
+            if(this.link) {
+                this.$router.push({ path: this.link });
+            } else {
+                this.$emit('buttonPressed');
+            }
         },
     }
 }

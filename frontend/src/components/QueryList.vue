@@ -1,6 +1,6 @@
 <template>
     <div id="query-list">
-        <template v-if="list">
+        <template v-if="list && list.length > 0">
             <div class="table-header table-row">
                 <strong class="table-item">ID</strong>
                 <strong class="table-item">Name</strong>
@@ -13,11 +13,17 @@
                 <span class="table-item">{{item.name ? item.name : ''}}</span>
                 <span class="table-item">{{item.code ? item.code : ''}}</span>
                 <div class="table-item">
-                    <button-vue :link="`/languages/edit/${item.id}`" :color="'#3D8BE4'" :text="'Edit'" :icon="'fa-pen'"></button-vue>
+                    <button-vue 
+                      :link="`/languages/edit/${item.id}`" 
+                      :color="'#3D8BE4'" 
+                      :text="'Edit'" #
+                      :icon="'fa-pen'" />
                 </div>
             </div>
         </template>
-        <span v-else></span>
+        <span class="no-results" v-else>
+            No Results - Absolutely Nothing to Show.
+        </span>
     </div>
 </template>
 
@@ -50,6 +56,10 @@ export default {
             align-self: center;
             margin: 0 10px;
         }
+    }
+    .no-results {
+        display: block;
+        text-align: center;
     }
 }
 </style>
