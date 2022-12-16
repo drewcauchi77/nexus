@@ -67,14 +67,14 @@ input {
 }
 
 ::-webkit-scrollbar-track {
-    background: $highlight-color;
+    background: $text-color;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: $text-color;
+    background: $highlight-color;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: $text-color;
+    background: $highlight-color;
 }

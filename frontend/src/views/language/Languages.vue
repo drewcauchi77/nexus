@@ -21,6 +21,7 @@ export default {
         languages: {
             prefetch: true,
             query: GET_LANGUAGES,
+            fetchPolicy: 'no-cache',
         }
     },
     components: {
