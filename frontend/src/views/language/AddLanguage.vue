@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import store from '@/store/state';
 import TitleHeader from '@/components/TitleHeader.vue';
 import InputVue from '@/components/Input.vue';
 import { useVuelidate } from '@vuelidate/core';
@@ -62,9 +63,22 @@ export default {
                         name: this.languageName,
                         code: this.languageCode,
                     }
+                }).then((data) => {
+                    store.addAlertMessage({
+                        error: false,
+                        message: 'Language has been added successfully!',
+                    }, '@/views/language/AddLanguage.vue -> addLanguage()');
+                }).catch((error) => {
+                    store.addAlertMessage({
+                        error: true,
+                        message: 'A technical error has occurred!',
+                    }, '@/views/language/AddLanguage.vue -> addLanguage()');
                 })
             } else {
-                console.log('Error')
+                store.addAlertMessage({
+                    error: true,
+                    message: 'Some required fields are empty!',
+                }, '@/views/language/AddLanguage.vue -> addLanguage()');
             }
         }
     },

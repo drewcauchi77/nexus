@@ -1,5 +1,6 @@
 <template>
     <main id="main">
+        <alert />
         <side-menu @isMenuExpanded="isSideMenuExpanded"></side-menu>
         <div id="content" :class="{'restrict-width' : isMenuExpanded}">
             <router-view></router-view>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import Alert from '@/components/Alerts.vue';
 import SideMenu from '@/components/side_menu/SideMenu.vue';
 
 export default {
@@ -18,7 +20,8 @@ export default {
         }
     },
     components: {
-        SideMenu
+        Alert,
+        SideMenu,
     },
     methods: {
         isSideMenuExpanded(value) {

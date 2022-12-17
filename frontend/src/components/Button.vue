@@ -51,6 +51,7 @@ export default {
     background: transparent;
     border: none;
     padding: 0px;
+    outline-color: $text-color;
     .text-area {
         height: 100%;
         display: none;
