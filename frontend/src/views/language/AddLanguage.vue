@@ -68,6 +68,8 @@ export default {
                         error: false,
                         message: 'Language has been added successfully!',
                     }, '@/views/language/AddLanguage.vue -> addLanguage()');
+                    this.languageName = '';
+                    this.languageCode = '';
                 }).catch((error) => {
                     store.addAlertMessage({
                         error: true,

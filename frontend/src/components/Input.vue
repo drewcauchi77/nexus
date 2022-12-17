@@ -9,7 +9,7 @@
           :name="name" 
           :id="name" 
           :placeholder="placeholder" 
-          v-model="inputValue" 
+          :value="modelValue" 
           @input="$emit('update:modelValue', $event.target.value)" />
     </div>
 </template>
@@ -17,12 +17,11 @@
 <script>
 export default {
     name: 'InputVue',
-    data() {
-        return {
-            inputValue: '',
-        }
-    },
     props: {
+        modelValue: {
+            type: String,
+            default: '',
+        },
         label: {
             type: String,
             default: 'Enter here',
@@ -40,7 +39,8 @@ export default {
             default: 'Enter Here',  
         },
         required: Boolean,
-    }
+    },
+    emits: ['update:modelValue']
 }
 </script>
 
