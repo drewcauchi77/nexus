@@ -9,6 +9,14 @@ import {
     faLanguage, 
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faArrowRight, faPlus, faPen, faFloppyDisk, faHouseChimney, faGlobe, faLanguage);
+library.add(
+    faArrowRight, 
+    faPlus, 
+    faPen, 
+    faFloppyDisk, 
+    faHouseChimney, 
+    faGlobe, 
+    faLanguage,
+);
 
 export default library;
