@@ -6,7 +6,7 @@ const props = defineProps({
     link: String,
     color: {
         type: String,
-        default: '#3D8BE4',
+        default: '#18bdb1',
     },
     text: {
         type: String,
@@ -55,7 +55,8 @@ function action() {
     background: transparent;
     border: none;
     padding: 0px;
-    outline-color: $text-color;
+    outline-color: $darken-text-color;
+    color: $darken-text-color;
     .text-area {
         height: 100%;
         display: none;
@@ -83,6 +84,7 @@ function action() {
         background-size: 200%;
         transition: 0.2s ease-in;
         background-position-x: right;
+        color: $text-color;
         .icon {
             position: absolute;
             top: 0;
@@ -97,6 +99,7 @@ function action() {
     &:hover {
         .icon-container {
             background-position: left;
+            color: $darken-text-color;
         }
     }
 }

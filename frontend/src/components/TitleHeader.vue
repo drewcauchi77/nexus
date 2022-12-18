@@ -12,7 +12,7 @@ const props = defineProps({
         <h2>{{title}}</h2>
         <button-vue v-if="hasButton" 
           :link="`/languages/new`" 
-          :color="'#2EA923'" 
+          :color="'#18bdb1'" 
           :text="'Create'" 
           :icon="'fa-plus'" />
     </div>

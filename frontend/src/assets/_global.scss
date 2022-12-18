@@ -4,7 +4,7 @@ body, button, input {
     margin: 0px;
     font-family: 'Raleway', sans-serif;
     color: $text-color;
-    background-color: $light-black;
+    background-color: $dashitem-background-color;
     letter-spacing: 1px;
 }
 
@@ -55,9 +55,9 @@ a {
 
 input {
     background-color: $text-color;
-    color: $nice-black;
+    color: $background-color;
     &:focus {
-        outline-color: $highlight-color;
+        outline-color: $main-highlight-color;
     }
 }
 
@@ -71,10 +71,10 @@ input {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: $highlight-color;
+    background: $main-highlight-color;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: $highlight-color;
+    background: $main-highlight-color;
 }

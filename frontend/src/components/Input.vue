@@ -53,7 +53,7 @@ const emits = defineEmits(['update:modelValue']);
         display: block;
         margin-bottom: 20px;
         .required {
-            color: $highlight-color;
+            color: $main-highlight-color;
         }
     }
     input {

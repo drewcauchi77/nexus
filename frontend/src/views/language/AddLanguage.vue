@@ -74,7 +74,7 @@ function addLanguage() {
               :required="true"
               v-model="languageCode" />
             <button-vue 
-              :color="'#3D8BE4'" 
+              :color="'#18bdb1'" 
               :text="'Save'" 
               :icon="'fa-floppy-disk'"
               @buttonPressed="addLanguage()" />

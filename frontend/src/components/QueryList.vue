@@ -23,8 +23,8 @@ const props = defineProps({
                 <div class="table-item">
                     <button-vue 
                       :link="`/languages/edit/${item.id}`" 
-                      :color="'#3D8BE4'" 
-                      :text="'Edit'" #
+                      :color="'#18bdb1'" 
+                      :text="'Edit'"
                       :icon="'fa-pen'" />
                 </div>
             </div>
@@ -39,9 +39,10 @@ const props = defineProps({
 @import '@/assets/variables';
 
 #query-list {
+    padding: 0 10px;
     .table-header {
-        background-color: $highlight-color;
-        color: $nice-black;
+        background-color: $darken-secondary-highlight-color;
+        color: $background-color;
     }
     .table-row {
         display: flex;

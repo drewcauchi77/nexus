@@ -28,7 +28,7 @@ const props = defineProps({
     text-align: center;
     font-size: 14px;
     a {
-        color: $highlight-color;
+        color: $main-highlight-color;
         display: block;
         position: relative;
         .active-link {
@@ -38,7 +38,7 @@ const props = defineProps({
             bottom: 0;
             left: 0;
             width: 100%;
-            background: $highlight-color;
+            background: $main-highlight-color;
             margin: auto;
             height: 100%;
             border-radius: 0 $border-radius $border-radius 0;
@@ -55,7 +55,7 @@ const props = defineProps({
         }
         &:hover, &.router-link-active, &.router-link-exact-active {
             .active-link {
-                border-left: 1px solid $nice-black;
+                border-left: 1px solid $background-color;
                 max-width: 4px;
             }
         }

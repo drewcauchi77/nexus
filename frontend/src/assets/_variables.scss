@@ -1,10 +1,14 @@
-$nice-black: #272b34;
-$light-black: #373a44;
-$text-color: #FFFFFF;
-$highlight-color: #ff4b4c;
+$background-color: #232c32;
+$dashitem-background-color: #2a333a;
+$main-highlight-color: #18bdb1;
+$darken-main-highlight-color: #1a5a5f;
+$secondary-highlight-color: #fdb755;
+$darken-secondary-highlight-color: #f2936b;
+$text-color: #abaeb5;
+$darken-text-color: #22303b;
 
 $border-radius: 10px;
-$box-shadow: 1px 2px 5px 2px rgba(255, 255, 255, 0.1);
+$box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.5);
 
 $screen-sm: 576px;
 $screen-md: 768px;

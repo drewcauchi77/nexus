@@ -45,7 +45,7 @@ function expandMenu() {
         border-radius: 50%;
         height: 30px;
         width: 30px;
-        background-color: $highlight-color;
+        background-color: $main-highlight-color;
         box-shadow: $box-shadow;
         cursor: pointer;
         transition: 0.2s ease-in;
@@ -74,7 +74,7 @@ function expandMenu() {
         overflow-y: scroll;
         overflow-x: hidden;
         height: 100%;
-        background-color: $nice-black;
+        background-color: $background-color;
         border-radius: $border-radius;
         box-shadow: $box-shadow;
         .side-menu-item {
