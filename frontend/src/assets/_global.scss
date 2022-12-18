@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap');
+
+body, button, input {
+    margin: 0px;
+    font-family: 'Raleway', sans-serif;
+    color: $text-color;
+    background-color: $light-black;
+    letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 15px;
+}
+
+p, span, a {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+a {
+    color: $text-color;
+    text-decoration: none;
+    &:hover {
+        font-weight: 500;
+    }
+}
+
+input {
+    background-color: $text-color;
+    color: $nice-black;
+    &:focus {
+        outline-color: $highlight-color;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: $text-color;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $highlight-color;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $highlight-color;
+}
