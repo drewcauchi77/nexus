@@ -1,3 +1,24 @@
+<script setup>
+import { defineProps, computed, watch } from 'vue';
+import store from '@/store/state';
+
+const props = defineProps({
+    success: Boolean,
+});
+
+const alerts = computed(() => {
+    return store.state.alerts;
+});
+
+watch(alerts, () => {
+    if(alerts.value.length > 0) {
+        setTimeout(function() {
+            store.removeAlertMessage('@/components/Alerts.vue -> watch:alerts()');
+        }, 5000);
+    }
+});
+</script>
+
 <template>
     <div class="alerts" v-if="alerts.length > 0">
         <div class="alert" v-for="(alert, index) in alerts" :key="index" :class="{'success' : !alert.error}">
@@ -5,29 +26,6 @@
         </div>
     </div>
 </template>
-
-<script>
-import store from '@/store/state';
-
-export default {
-    name: 'Alert',
-    props: {
-        success: Boolean,
-    },
-    computed: {
-        alerts() { return store.state.alerts; }
-    },
-    watch: {
-        alerts() {
-            if(this.alerts.length > 0) {
-                setTimeout(function() {
-                    store.removeAlertMessage('@/components/Alerts.vue -> watch:alerts()')
-                }.bind(this), 5000);
-            }
-        }
-    }
-}
-</script>
 
 <style lang="scss" scoped>
 .alerts {

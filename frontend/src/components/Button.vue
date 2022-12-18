@@ -1,3 +1,37 @@
+<script setup>
+import { defineProps, defineEmits } from 'vue';
+import { useRouter } from 'vue-router';
+
+const props = defineProps({
+    link: String,
+    color: {
+        type: String,
+        default: '#3D8BE4',
+    },
+    text: {
+        type: String,
+        default: 'Action',
+    },
+    icon: {
+        type: String,
+        default: 'fa-pen'
+    },
+});
+
+const router = useRouter();
+const emits = defineEmits(['buttonPressed']);
+
+function action() {
+    if(props.link && props.link !== '') {
+        router.push({ 
+            path: props.link 
+        });
+    } else {
+        emits('buttonPressed');
+    }
+}
+</script>
+
 <template>
     <button class="button" @click="action()" :style="{ border: `2px solid ${color}` }">
         <div class="text-area" :style="{ backgroundColor: color }">
@@ -8,36 +42,6 @@
         </div>
     </button>
 </template>
-
-<script>
-export default {
-    name: 'ButtonVue',
-    props: {
-        link: String,
-        color: {
-            type: String,
-            default: '#3D8BE4',
-        },
-        text: {
-            type: String,
-            default: 'Action',
-        },
-        icon: {
-            type: String,
-            default: 'fa-pen'
-        },
-    },
-    methods: {
-        action() {
-            if(this.link) {
-                this.$router.push({ path: this.link });
-            } else {
-                this.$emit('buttonPressed');
-            }
-        },
-    }
-}
-</script>
 
 <style lang="scss" scoped>
 @import '@/assets/variables';

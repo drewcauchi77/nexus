@@ -1,3 +1,11 @@
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+    list: Object,
+});
+</script>
+
 <template>
     <div id="query-list">
         <template v-if="list && list.length > 0">
@@ -26,15 +34,6 @@
         </span>
     </div>
 </template>
-
-<script>
-export default {
-    name: 'QueryList',
-    props: {
-        list: Object,
-    },
-}
-</script>
 
 <style lang="scss" scoped>
 @import '@/assets/variables';

@@ -1,36 +1,20 @@
+<script setup>
+import { useQuery } from '@vue/apollo-composable';
+import { GET_LANGUAGES } from '@/queries/languages';
+import TitleHeader from '@/components/TitleHeader.vue';
+import QueryList from '@/components/QueryList.vue';
+
+const { result, loading } = useQuery(GET_LANGUAGES);
+</script>
+
 <template>
     <div id="languages-list">
-        <template v-if="$apollo.loading">
+        <template v-if="loading && loading.value">
             <loading></loading>
         </template>
-        <template v-else>
+        <template v-else-if="result && result.languages">
             <title-header :title="'Languages'" :hasButton="true"></title-header>
-            <query-list :list="languages"></query-list>
+            <query-list :list="result.languages"></query-list>
         </template>
     </div>
 </template>
-
-<script>
-import TitleHeader from '@/components/TitleHeader.vue';
-import QueryList from '@/components/QueryList.vue';
-import { GET_LANGUAGES } from '@/queries/languages';
-
-export default {
-    name: 'Languages',
-    apollo: {
-        languages: {
-            prefetch: true,
-            query: GET_LANGUAGES,
-            fetchPolicy: 'no-cache',
-        }
-    },
-    components: {
-        TitleHeader,
-        QueryList,
-    },
-}
-</script>
-
-<style lang="scss" scoped>
-
-</style>

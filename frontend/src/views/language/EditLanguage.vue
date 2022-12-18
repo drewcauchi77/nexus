@@ -1,3 +1,7 @@
+<script setup>
+// Silence is golden
+</script>
+
 <template>
     <div>
         Edit Language<br/>
@@ -5,12 +9,6 @@
          - Edit a Language by passing the Language ID : ID = {{$route.params.id}}<br/>
     </div>
 </template>
-
-<script>
-export default {
-    name: 'EditLanguage',
-}
-</script>
 
 <style lang="scss" scoped>
 

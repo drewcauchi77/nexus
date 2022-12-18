@@ -1,3 +1,12 @@
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+    title: String,
+    hasButton: Boolean,
+});
+</script>
+
 <template>
     <div id="title-header">
         <h2>{{title}}</h2>
@@ -8,16 +17,6 @@
           :icon="'fa-plus'" />
     </div>
 </template>
-
-<script>
-export default {
-    name: 'TitleHeader',
-    props: {
-        title: String,
-        hasButton: Boolean,
-    },
-}
-</script>
 
 <style lang="scss" scoped>
 @import '@/assets/variables';

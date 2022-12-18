@@ -1,3 +1,13 @@
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+    anchor: String,
+    anchorIcon: String,
+    anchorText: String,
+});
+</script>
+
 <template>
     <nav class="side-menu-item">
         <router-link :to="anchor">
@@ -9,17 +19,6 @@
         </router-link>
     </nav>
 </template>
-
-<script>
-export default {
-    name: 'SideMenuLink',
-    props: {
-        anchor: String,
-        anchorIcon: String,
-        anchorText: String,
-    },
-}
-</script>
 
 <style lang="scss" scoped>
 @import '@/assets/variables';

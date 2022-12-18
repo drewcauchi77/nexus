@@ -1,3 +1,16 @@
+<script setup>
+import { ref, defineEmits } from 'vue';
+import SideMenuLink from './SideMenuLink.vue';
+
+const isMenuExpanded = ref(false);
+const emits = defineEmits(['isMenuExpanded'])
+
+function expandMenu() {
+    isMenuExpanded.value = !isMenuExpanded.value;
+    emits('isMenuExpanded', isMenuExpanded.value);
+}
+</script>
+
 <template>
     <div id="side-menu" :class="{'expanded-menu' : isMenuExpanded}">
         <div class="collapse-button" @click="expandMenu()">
@@ -11,28 +24,6 @@
         </div>
     </div>
 </template>
-
-<script>
-import SideMenuLink from './SideMenuLink.vue';
-
-export default {
-    name: 'SideMenu',
-    data() {
-        return {
-            isMenuExpanded: false,
-        }
-    },
-    components: {
-        SideMenuLink,
-    },
-    methods: {
-        expandMenu() {
-            this.isMenuExpanded = !this.isMenuExpanded;
-            this.$emit('isMenuExpanded', this.isMenuExpanded);
-        }
-    },
-}
-</script>
 
 <style lang="scss" scoped>
 @import '@/assets/variables';

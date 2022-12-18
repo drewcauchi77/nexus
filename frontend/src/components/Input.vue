@@ -1,3 +1,33 @@
+<script setup>
+import { defineProps, defineEmits } from 'vue';
+
+const props = defineProps({
+    modelValue: {
+        type: String,
+        default: '',
+    },
+    label: {
+        type: String,
+        default: 'Enter here',
+    },
+    type: {
+        type: String,
+        default: 'text',
+    },
+    name: {
+        type: String,
+        default: 'name',
+    },
+    placeholder: {
+        type: String,
+        default: 'Enter Here',  
+    },
+    required: Boolean,
+});
+
+const emits = defineEmits(['update:modelValue']);
+</script>
+
 <template>
     <div class="input">
         <label :for="name">
@@ -13,36 +43,6 @@
           @input="$emit('update:modelValue', $event.target.value)" />
     </div>
 </template>
-
-<script>
-export default {
-    name: 'InputVue',
-    props: {
-        modelValue: {
-            type: String,
-            default: '',
-        },
-        label: {
-            type: String,
-            default: 'Enter here',
-        },
-        type: {
-            type: String,
-            default: 'text',
-        },
-        name: {
-            type: String,
-            default: 'name',
-        },
-        placeholder: {
-            type: String,
-            default: 'Enter Here',  
-        },
-        required: Boolean,
-    },
-    emits: ['update:modelValue']
-}
-</script>
 
 <style lang="scss" scoped>
 @import '@/assets/variables';

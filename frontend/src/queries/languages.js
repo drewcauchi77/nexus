@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const GET_LANGUAGES = gql`
-    query {
+    query getLanguages {
         languages {
             id
             name
@@ -11,7 +11,7 @@ const GET_LANGUAGES = gql`
 `;
 
 const ADD_LANGUAGE = gql`
-    mutation ($name: String!, $code: String!){
+    mutation addLanguage ($name: String!, $code: String!){
         addLanguage(name: $name, code: $code) {
             updatedAt
         }

@@ -1,3 +1,15 @@
+<script setup>
+import { ref } from 'vue';
+import Alert from '@/components/Alerts.vue';
+import SideMenu from '@/components/side_menu/SideMenu.vue';
+
+const isMenuExpanded = ref(false);
+
+function isSideMenuExpanded(value) {
+    isMenuExpanded.value = value;
+}
+</script>
+
 <template>
     <main id="main">
         <alert />
@@ -7,29 +19,6 @@
         </div>
     </main>
 </template>
-
-<script>
-import Alert from '@/components/Alerts.vue';
-import SideMenu from '@/components/side_menu/SideMenu.vue';
-
-export default {
-    name: 'App',
-    data() {
-        return {
-            isMenuExpanded: false,
-        }
-    },
-    components: {
-        Alert,
-        SideMenu,
-    },
-    methods: {
-        isSideMenuExpanded(value) {
-            this.isMenuExpanded = value;
-        }
-    },
-}
-</script>
 
 <style lang="scss" scoped>
 @import '@/assets/variables';

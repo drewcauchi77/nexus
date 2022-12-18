@@ -1,12 +1,10 @@
+<script setup>
+// Silence is golden
+</script>
+
 <template>
     <div class="loading"></div>
 </template>
-
-<script>
-export default {
-    name: 'Loading',
-}
-</script>
 
 <style lang="scss" scoped>
 @import '@/assets/variables';
