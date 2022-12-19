@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { useQuery } from '@vue/apollo-composable';
 import { GET_LANGUAGES } from '@/queries/languages';
 import TitleHeader from '@/components/TitleHeader.vue';
@@ -9,12 +10,14 @@ const { result, loading } = useQuery(GET_LANGUAGES);
 
 <template>
     <div id="languages-list">
-        <template v-if="loading && loading.value">
-            <loading></loading>
-        </template>
+        <div class="loading" v-if="loading"></div>
         <template v-else-if="result && result.languages">
-            <title-header :title="'Languages'" :hasButton="true"></title-header>
-            <query-list :list="result.languages"></query-list>
+            <title-header 
+              :title="'Languages'" 
+              :hasButton="true" 
+              :withSearch="true"
+              :searchList="result.languages" />
+            <query-list :list="result.languages" />
         </template>
     </div>
 </template>

@@ -1,12 +1,10 @@
 <script setup>
-// Silence is golden
+import TitleHeader from '@/components/TitleHeader.vue';
 </script>
 
 <template>
-    <div>
-        Edit Language<br/>
-        Here you can:<br/>
-         - Edit a Language by passing the Language ID : ID = {{$route.params.id}}<br/>
+    <div id="edit-language">
+        <title-header :title="'Edit Language'" />
     </div>
 </template>
 

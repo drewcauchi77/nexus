@@ -1,6 +1,12 @@
 <script setup>
-import { defineProps, computed, watch } from 'vue';
+import { ref, defineProps, computed, watch } from 'vue';
 import store from '@/store/state';
+
+const keyToAlertMessage = ref({
+    'creation-success': 'Creation of item has been successful!',
+    'technical-error': 'A technical error has occurred!<br>Please contact tech support.',
+    'vuelidate-error': 'There are some missing fields which are required!',
+});
 
 const props = defineProps({
     success: Boolean,
@@ -22,7 +28,7 @@ watch(alerts, () => {
 <template>
     <div class="alerts" v-if="alerts.length > 0">
         <div class="alert" v-for="(alert, index) in alerts" :key="index" :class="{'success' : !alert.error}">
-            <span>{{alert.message}}</span>
+            <span v-html="keyToAlertMessage[alert.key]"></span>
         </div>
     </div>
 </template>
@@ -41,6 +47,7 @@ watch(alerts, () => {
         padding: 10px;
         margin-bottom: 10px;
         background-color: #FF3333;
+        text-align: center;
         &.success {
             background-color: #198754;
         }

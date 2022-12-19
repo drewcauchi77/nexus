@@ -6,10 +6,7 @@ const props = defineProps({
         type: String,
         default: '',
     },
-    label: {
-        type: String,
-        default: 'Enter here',
-    },
+    label: String,
     type: {
         type: String,
         default: 'text',
@@ -30,7 +27,7 @@ const emits = defineEmits(['update:modelValue']);
 
 <template>
     <div class="input">
-        <label :for="name">
+        <label :for="name" v-if="label">
             {{label}}
             <span v-if="required" class="required">&nbsp;&#10033;</span>
         </label>
@@ -53,7 +50,7 @@ const emits = defineEmits(['update:modelValue']);
         display: block;
         margin-bottom: 20px;
         .required {
-            color: $main-highlight-color;
+            color: $darken-secondary-highlight-color;
         }
     }
     input {

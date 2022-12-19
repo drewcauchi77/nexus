@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useMutation } from '@vue/apollo-composable';
-import { ADD_LANGUAGE } from '@/queries/languages';
+import { GET_LANGUAGES, ADD_LANGUAGE } from '@/queries/languages';
 import TitleHeader from '@/components/TitleHeader.vue';
 import InputVue from '@/components/Input.vue';
 import store from '@/store/state';
@@ -22,44 +22,53 @@ const v$ = useVuelidate(rules, {
 });
 
 function addLanguage() {
-    if(!v$.value.$dirty && !v$.value.$invalid && v$.value.$silentErrors.length == 0) {
-        const { mutate: addLanguage, onDone, onError } = useMutation(ADD_LANGUAGE, () => ({
-            variables: {
-                name: languageName.value,
-                code: languageCode.value,
-            }
-        }));
+    try {
+        if(!v$.value.$dirty && !v$.value.$invalid && v$.value.$silentErrors.length == 0) {
+            const { mutate: addLanguage, onDone, onError } = useMutation(ADD_LANGUAGE, () => ({
+                variables: {
+                    name: languageName.value,
+                    code: languageCode.value,
+                },
+                update: (cache, { data: { addLanguage } }) => {
+                    let data = cache.readQuery({ query: GET_LANGUAGES });
+                    if(data && data.languages) {
+                        data = {
+                            ...data, 
+                            languages: [
+                                ...data.languages,
+                                addLanguage
+                            ],
+                        };
+                    }
+                    cache.writeQuery({ query: GET_LANGUAGES, data })
+                }
+            }));
 
-        addLanguage();
+            onDone(() => {
+                store.addAlertMessage({ error: false, key: 'creation-success' }, '@/views/language/AddLanguage.vue -> addLanguage() -> onDone');
+                languageName.value = '';
+                languageCode.value = '';
+            });
 
-        onDone(() => {
-            store.addAlertMessage({
-                error: false,
-                message: 'Language has been added successfully!',
-            }, '@/views/language/AddLanguage.vue -> addLanguage()');
+            onError((error) => {
+                console.error(error);
+                store.addAlertMessage({ error: true, key: 'technical-error' }, '@/views/language/AddLanguage.vue -> addLanguage() -> onError');
+            });
 
-            languageName.value = '';
-            languageCode.value = '';
-        });
-
-        onError(() => {
-            store.addAlertMessage({
-                error: true,
-                message: 'A technical error has occurred!',
-            }, '@/views/language/AddLanguage.vue -> addLanguage()');
-        });
-    } else {
-        store.addAlertMessage({
-            error: true,
-            message: 'Some required fields are empty!',
-        }, '@/views/language/AddLanguage.vue -> addLanguage()');
+            addLanguage();
+        } else {
+            store.addAlertMessage({ error: true, key: 'vuelidate-error' }, '@/views/language/AddLanguage.vue -> addLanguage() -> validation check');
+        }
+    } catch (error) {
+        console.error(error);
+        store.addAlertMessage({ error: true, key: 'technical-error' }, '@/views/language/AddLanguage.vue -> addLanguage() -> try..catch');
     }
 }
 </script>
 
 <template>
     <div id="new-language">
-        <title-header :title="'Add New Language'"></title-header>
+        <title-header :title="'Add New Language'" />
         <form @submit.prevent="">
             <input-vue 
               :label="'Enter Language Name in Native Language'" 

@@ -1,14 +1,3 @@
-<script setup>
-// Silence is golden
-</script>
-
-<template>
-    <div class="loading"></div>
-</template>
-
-<style lang="scss" scoped>
-@import '@/assets/variables';
-
 @keyframes rotateHourGlass {
     0% {
         transform: rotate(0);
@@ -43,4 +32,3 @@
         animation: rotateHourGlass 1.2s infinite;
     }
 }
-</style>

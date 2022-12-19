@@ -13,7 +13,7 @@ function isSideMenuExpanded(value) {
 <template>
     <main id="main">
         <alert />
-        <side-menu @isMenuExpanded="isSideMenuExpanded"></side-menu>
+        <side-menu @isMenuExpanded="isSideMenuExpanded" />
         <div id="content" :class="{'restrict-width' : isMenuExpanded}">
             <router-view></router-view>
         </div>

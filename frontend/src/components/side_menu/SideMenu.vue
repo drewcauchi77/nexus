@@ -13,14 +13,28 @@ function expandMenu() {
 
 <template>
     <div id="side-menu" :class="{'expanded-menu' : isMenuExpanded}">
-        <div class="collapse-button" @click="expandMenu()">
-            <div class="collapse-icon" :class="{'collapse-menu' : isMenuExpanded}"><icon icon="fa-arrow-right" /></div>
+        <div class="inner-side-menu">
+            <div class="dashboard-icon">
+                <img class="icon" src="/icon.png" />
+            </div>
+            <side-menu-link 
+              :anchor="'/'" 
+              :anchorIcon="'fa-house-chimney'" 
+              :anchorText="'Home'" />
+            <side-menu-link 
+              :anchor="'/languages'" 
+              :anchorIcon="'fa-language'" 
+              :anchorText="'Languages'" />
+            <side-menu-link 
+              :anchor="'/'" 
+              :anchorIcon="'fa-globe'" 
+              :anchorText="'Sites'" />
         </div>
 
-        <div class="inner-side-menu">
-            <side-menu-link :anchor="'/'" :anchorIcon="'fa-house-chimney'" :anchorText="'Home'" />
-            <side-menu-link :anchor="'/languages'" :anchorIcon="'fa-language'" :anchorText="'Languages'" />
-            <side-menu-link :anchor="'/'" :anchorIcon="'fa-globe'" :anchorText="'Sites'" />
+        <div class="collapse-button" @click="expandMenu()">
+            <div class="collapse-icon" :class="{'collapse-menu' : isMenuExpanded}">
+                <icon icon="fa-arrow-right" />
+            </div>
         </div>
     </div>
 </template>
@@ -77,6 +91,25 @@ function expandMenu() {
         background-color: $background-color;
         border-radius: $border-radius;
         box-shadow: $box-shadow;
+        .dashboard-icon {
+            border-radius: $border-radius;
+            margin-bottom: 20px;
+            padding: 5px 10px;
+            position: relative;
+            height: 70px;
+            background: rgb(224,204,163);
+            background: linear-gradient(180deg, rgba(224,204,163,1) 0%, rgba(199,148,102,1) 35%, rgba(189,107,82,1) 94%, rgba(131,84,80,1) 100%);
+            box-shadow: $box-shadow;
+            .icon {
+                width: 55px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+        }
         .side-menu-item {
             &:first-child {
                 margin-top: 100px;
@@ -109,6 +142,12 @@ function expandMenu() {
         max-width: 90px;
         padding: 10px;
         .inner-side-menu {
+            .dashboard-icon {
+                height: 80px;
+                .icon {
+                    width: 65px;
+                }
+            }
             .side-menu-item {
                 &:last-child {
                     margin-bottom: 60px;

@@ -39,7 +39,6 @@ const props = defineProps({
 @import '@/assets/variables';
 
 #query-list {
-    padding: 0 10px;
     .table-header {
         background-color: $darken-secondary-highlight-color;
         color: $background-color;

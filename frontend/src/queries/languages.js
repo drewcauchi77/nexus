@@ -13,7 +13,9 @@ const GET_LANGUAGES = gql`
 const ADD_LANGUAGE = gql`
     mutation addLanguage ($name: String!, $code: String!){
         addLanguage(name: $name, code: $code) {
-            updatedAt
+            id
+            name
+            code
         }
     }
 `;
