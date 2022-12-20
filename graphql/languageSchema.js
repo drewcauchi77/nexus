@@ -45,7 +45,7 @@ var languageQuery = new GraphQLObjectType({
                         ],
                     })
                     if (!languages) {
-                        throw new Error('Error')
+                        throw new Error('language-code-exists');
                     }
                     return languages
                 }
@@ -71,7 +71,7 @@ var languageQuery = new GraphQLObjectType({
                     }
                     
                     if (!languageDetails) {
-                        throw new Error('Error')
+                        throw new Error('not-found');
                     }
                     return languageDetails
                 }
@@ -106,11 +106,11 @@ var languageMutation = new GraphQLObjectType({
                         languageModel = new LanguageModel(params);
                         newLanguage = languageModel.save();
                     } else {
-                        throw new Error('Language Code Already exists');
+                        throw new Error('language-code-exists');
                     }
                     
                     if (!newLanguage) {
-                        throw new Error('Error');
+                        throw new Error('not-found');
                     }
 
                     return newLanguage
@@ -143,7 +143,7 @@ var languageMutation = new GraphQLObjectType({
                     if(isLanguageCodeUnique) {
                         return LanguageModel.findByPk(params.id).then(language => {
                             if (!language) {
-                                throw new Error('Not found');
+                                throw new Error('not-found');
                             }
 
                             return language.update({
@@ -151,14 +151,14 @@ var languageMutation = new GraphQLObjectType({
                                 code: params.code || language.code,
                             }).then(() => { 
                                 return language; 
-                            }).catch((error) => { 
-                                throw new Error(error); 
+                            }).catch(() => { 
+                                throw new Error('technical-error');
                             });
-                        }).catch((error) => { 
-                            throw new Error(error); 
+                        }).catch(() => { 
+                            throw new Error('not-found');
                         });
                     } else {
-                        throw new Error('Language Code Already exists');
+                        throw new Error('language-code-exists');
                     }
                 }
             },
@@ -172,18 +172,18 @@ var languageMutation = new GraphQLObjectType({
                 resolve(root, params) {
                     return LanguageModel.findByPk(params.id).then(language => {
                         if (!language) {
-                            throw new Error('Not found');
+                            throw new Error('not-found');
                         }
 
                         return language.destroy({
                             // Remove
                         }).then(() => { 
                             return language; 
-                        }).catch((error) => { 
-                            throw new Error(error); 
+                        }).catch(() => { 
+                            throw new Error('technical-error');
                         });
-                    }).catch((error) => { 
-                        throw new Error(error); 
+                    }).catch(() => { 
+                        throw new Error('not-found'); 
                     });
                 }
             }

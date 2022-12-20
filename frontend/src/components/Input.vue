@@ -62,4 +62,10 @@ const emits = defineEmits(['update:modelValue']);
         box-sizing: border-box;
     }
 }
+
+@media only screen and (min-width: $screen-lg) {
+    .input {
+        margin-bottom: 40px;
+    }
+}
 </style>

@@ -43,12 +43,12 @@ function expandMenu() {
 @import '@/assets/variables';
 
 #side-menu {
-    height: calc(100vh - 8px);
+    height: calc(100vh - 16px);
     width: 100%;
     max-width: 64px;
     position: sticky;
     top: 0;
-    padding: 4px;
+    padding: 8px;
     flex: none;
     transition: 0.2s ease-in;
     .collapse-button {

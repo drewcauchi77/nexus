@@ -1,7 +1,7 @@
 import { reactive } from 'vue';
 
 let store = {
-    debug: true,
+    debug: false,
     state: reactive({
         alerts: [],
     }),

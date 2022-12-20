@@ -57,6 +57,7 @@ function action() {
     padding: 0px;
     outline-color: $darken-text-color;
     color: $darken-text-color;
+    box-shadow: $box-shadow;
     .text-area {
         height: 100%;
         display: none;

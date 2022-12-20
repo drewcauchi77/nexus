@@ -52,7 +52,7 @@ function addLanguage() {
 
             onError((error) => {
                 console.error(error);
-                store.addAlertMessage({ error: true, key: 'technical-error' }, '@/views/language/AddLanguage.vue -> addLanguage() -> onError');
+                store.addAlertMessage({ error: true, key: error.message }, '@/views/language/AddLanguage.vue -> addLanguage() -> onError');
             });
 
             addLanguage();
@@ -68,7 +68,10 @@ function addLanguage() {
 
 <template>
     <div id="new-language">
-        <title-header :title="'Add New Language'" />
+        <div class="title-section">
+            <title-header :title="'Add New Language'" />
+        </div>
+
         <form @submit.prevent="">
             <input-vue 
               :label="'Enter Language Name in Native Language'" 

@@ -6,6 +6,8 @@ const keyToAlertMessage = ref({
     'creation-success': 'Creation of item has been successful!',
     'technical-error': 'A technical error has occurred!<br>Please contact tech support.',
     'vuelidate-error': 'There are some missing fields which are required!',
+    'not-found': 'Not Found',
+    'language-code-exists': 'Language code already exists!'
 });
 
 const props = defineProps({
