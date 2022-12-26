@@ -10,8 +10,17 @@ const GET_LANGUAGES = gql`
     }
 `;
 
+const GET_LANGUAGE = gql`
+    query getLanguage ($id: Int!){
+        language(id: $id) {
+            name
+            code
+        }
+    }
+`;
+
 const ADD_LANGUAGE = gql`
-    mutation addLanguage ($name: String!, $code: String!){
+    mutation addLanguage ($name: String!, $code: String!) {
         addLanguage(name: $name, code: $code) {
             id
             name
@@ -20,4 +29,4 @@ const ADD_LANGUAGE = gql`
     }
 `;
 
-export { GET_LANGUAGES, ADD_LANGUAGE };
+export { GET_LANGUAGES, GET_LANGUAGE, ADD_LANGUAGE };
